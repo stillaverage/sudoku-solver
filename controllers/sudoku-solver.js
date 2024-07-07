@@ -42,7 +42,6 @@ class SudokuSolver {
       if (conflict.length === 0) {
         return { valid: true }
       } else {
-        console.log(conflict)
         return { valid: false, conflict }
       }
     } else {
@@ -77,28 +76,28 @@ class SudokuSolver {
     }
   }
 
-  checkRowPlacement(puzzleArray, row, column, value) {
+  checkRowPlacement(puzzle, row, column, value) {
     for (let i = 0; i < 9; i++) {
-      if (puzzleArray[9 * row + i] === value && i !== column) {
+      if (puzzle[9 * row + i] === value && i !== column) {
         return false;
       }
     }
     return true;
   }
 
-  checkColPlacement(puzzleArray, row, column, value) {
+  checkColPlacement(puzzle, row, column, value) {
     for (let j = 0; j < 9; j++) {
-      if (puzzleArray[9 * j + column] === value && j !== row) {
+      if (puzzle[9 * j + column] === value && j !== row) {
         return false;
       }
     }
     return true;
   }
 
-  checkRegionPlacement(puzzleArray, row, column, value) {
+  checkRegionPlacement(puzzle, row, column, value) {
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
-        if (puzzleArray[27 * Math.floor(row / 3) + i + 9 * j + 3 * Math.floor(column / 3)] === value && i !== column % 3 && j !== row % 3) {
+        if (puzzle[27 * Math.floor(row / 3) + i + 9 * j + 3 * Math.floor(column / 3)] === value && i !== column % 3 && j !== row % 3) {
           return false;
         }
       }

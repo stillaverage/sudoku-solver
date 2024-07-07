@@ -42,7 +42,6 @@ class SudokuSolver {
       if (conflict.length === 0) {
         return { valid: true }
       } else {
-        console.log(conflict)
         return { valid: false, conflict }
       }
     } else {
